@@ -29,22 +29,6 @@ def find_word(string_list):
     return word_list
 
 def find_days(string_list):
-    """ Return a list of days from the list of strings the dates format in the text are MM/DD/YYYY. """  
-
-    # initialize an empty list
-
-    # define the regular expression
-
-    # loop through each line of the string list
-    
-    # find all the dates that match the regular expression in each line
-    
-    # loop through the found dates and only add the days to your empty list 
-    
-    #return the list of days
-    pass
-
-def find_days(string_list):
     day = []
     regEx = r'(\b\d{1,2}[\/](\d{1,2})[\/](\d{4})\b)'
     for i in string_list:
@@ -54,25 +38,14 @@ def find_days(string_list):
     return day
 
 def find_domains(string_list):
-    """ Return a list of web address domains from the list of strings the domains of a wbsite are after www. """
-
-    # initialize an empty list
-
-    # define the regular expression
-
-    # loop through each line of the string list
-
-    # find all the domains that match the regular expression in each line
-
-    # loop through the found domains
-
-    # get the domain name by splitting the (//) after the https or http to get the website name
-    # then strip the www. to get only the domain name
-
-    # add the domains to your empty list
-    
-    #return the list of domains
-    pass
+    domainList = []
+    regEx = r'https?://[\w.]+'
+    for i in string_list:
+        x = re.findall(regEx, i)
+        for a in x:
+            domain= a.split('//')[1].strip('www.')
+            domainList.append(domain)
+    return domainList
 
 class TestAllMethods(unittest.TestCase):
 
